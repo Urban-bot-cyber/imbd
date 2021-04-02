@@ -1,7 +1,6 @@
-<html>
-    <head>
-    </head>
-<body>
+<?php
+    include_once 'header.php';
+?>
     <h1>Dobrodošli na strani MOVIES </h1>
     <?php
 
@@ -25,5 +24,6 @@
     ?>
 
 
-</body>
-</html>
+<?php
+    include_once 'footer.php';
+?>
