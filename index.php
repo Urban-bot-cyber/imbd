@@ -1,30 +1,25 @@
 <?php
-    include_once 'header.php';
+    include_once "header.php";
 ?>
     <h1>Dobrodošli na strani INDEX</h1>
-    <?php
-    
+    <?php 
+
     $a = 1876;
 
-    if(isset($_GET['id'])){
-        $b=$_GET['id'];
+    if (isset($_GET['id'])) {
+        $b = $_GET['id'];
     }
-        else {
+    else {
         $b=0;
     }
-
-    $b = $_GET['id'];
 
     $b++;
 
     echo $b;
-    
-    echo'<a href="movies.php?vrednost='.$b.'">MOVIES</a>';
+
+    echo '<a href="movies.php?vrednost='.$b.'">MOVIES</a>';
 
     ?>
-
-    
-
 <?php
-    include_once 'footer.php';
+    include_once "footer.php";
 ?>
