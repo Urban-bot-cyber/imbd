@@ -45,6 +45,7 @@ include_once "session.php";
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex">
           <a class="p-2 text-muted" href="genres.php">Žanri</a>
+          <a class="p-2 text-muted" href="actors.php">Igralci</a>
         </nav>
       </div>
 
