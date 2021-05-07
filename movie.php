@@ -4,6 +4,11 @@ include_once 'db.php';
 
 $id = (int)$_GET['id'];
 
+$query =  "SELECT * FROM movies WHERE id=?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$id]);
+$movie = $stmt->fetch();
+
 ?>
 
 <div class="film">
@@ -11,16 +16,12 @@ $id = (int)$_GET['id'];
         <img src="https://images-na.ssl-images-amazon.com/images/I/7124A8OOL6L._AC_SL1001_.jpg" alt="slika">
     </div>
     <div class="film-podatki">
-        <div class="naslov">Terminator</div>
-        <div class="zanri">Akcija | Triler</div>
-        <div class="leto">1984</div>
-        <div class="dolzina">1h 47min</div>
+        <div class="naslov"><?php echo $movie['title'];?></div>
+        <div class="zanri"><?php echo getGenres($movie['id']);?></div>
+        <div class="leto"><?php echo $movie['year_release'];?></div>
+        <div class="dolzina"><?php echo fromMintoString($movie['duration']);?></div>
         <div class="ocena">* * * *</div>
-        <div class="opis">The Terminator is a 1984 American science fiction film directed by James Cameron. 
-            It stars Arnold Schwarzenegger as the Terminator, a cyborg assassin sent back in time from 2029 to 1984 to kill Sarah Connor 
-            (Linda Hamilton), whose son will one day save mankind from extinction by a hostile artificial intelligence in a post-apocalyptic future. Michael 
-            Biehn plays Kyle Reese, a soldier sent back in time to protect Sarah. 
-            The screenplay is credited to Cameron and producer Gale Anne Hurd, while co-writer William Wisher Jr. received a credit for additional dialogue.</div>
+        <div class="opis"><?php echo $movie['description'];?></div>
     </div>
 </div>
 
