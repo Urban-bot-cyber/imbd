@@ -132,32 +132,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/**** moja koda ****/
-.igralci, .film, .komentarji {
-/*border-color: black;
-border-width: 2px;
-border-style: solid;*/
-margin-bottom: 20px;
+/**** lastni css ****/
+.igralci, .film, .komentarji{
+  /*border-color: black;
+  border-width: 2px;
+  border-style: solid;*/
+  margin-bottom: 10px;
 }
 
-.film {
- display: grid;
- grid-template-columns: 1fr 1fr;
- grid-gap: 15px;
+.film{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 }
 
-.film-slike img{
+.film img{
   width: 100%;
 }
 
-.film-podatki {
- font-size: 1.5em;
+.film-podatki{
+  font-size: 1.5em;
 }
 
-.film-podatki .naslov {
- font-weight: bold;
- font-size: 2em;
- color: blueviolet;
+.film-podatki .naslov{
+  font-weight: bold;
+  font-size: 2em;
+  color:blueviolet;
 }
 
 .film-podatki .zanri{
@@ -169,31 +169,57 @@ margin-bottom: 20px;
   font-style: italic;
 }
 
-.igralci{
+/*.igralci{
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
+}*/
 
-.igralec img {
-width: 60%;
+.igralec img{
+  width: 30%;
 }
 
 .igralec .igralec-podatki{
-  font-size: 1.2em;
+  
+  font-size: 1em;
   font-weight: bold;
 }
 
+
 .komentarji-prikaz{
-  margin-top: 50px;
+  margin-top:50px;
 }
 
 .komentar-podatki{
-  margin-top: 5px;
-  font-style: italic;
-  font-size: 0.6em;
+  font-style:italic;
   font-weight: bold;
 }
 
 .komentar div{
+  margin-top:5px;
   font-size: 0.8em;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+
+.post .post-description {
+  padding: 15px;
+}
+
+.card{
+  margin-bottom:20px;
 }

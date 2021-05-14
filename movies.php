@@ -10,10 +10,9 @@ include_once "db.php";
 $query = "SELECT * FROM movies";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
-//izpis vseh igralcev
+//izpis vseh filmov
 while ($row = $stmt->fetch()) {
-    echo '<div class="movie
-">';
+    echo '<div class="movie">';
     echo '<a href="movie.php?id='.$row['id'].'">';
         echo $row['title'];
     echo '</a>';

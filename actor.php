@@ -24,6 +24,7 @@ $actor = $stmt->fetch();
         echo '<img src="'.$row['url'].'" width="150" alt="'.$row['title'].'" /> ';
     }
 ?>
+
 </div>
 <hr />
 <form action="actor_image_upload.php" method="post" enctype="multipart/form-data">

@@ -2,51 +2,56 @@
 session_start();
 
 $root_path = '/imdb';
-//neprijavljen lako obišče....
-$allowed=[
+//neprijavljen lahko obišče ...
+$allowed = [
     $root_path.'/index.php',
     $root_path.'/user_add.php',
     $root_path.'/user_insert.php',
     $root_path.'/login.php',
     $root_path.'/login_check.php'
 ];
-
-if(!isset($_SESSION['user_id']) && (!in_array($_SERVER['REQUEST_URI'],$allowed))){
-    header("Location:login.php");die();
+//če uporabnik ni prijavljen in ne obiskuje dovoljenih strani - ga preusmeri na prijavo
+if (!isset($_SESSION['user_id']) && (!in_array($_SERVER['REQUEST_URI'],$allowed))) {
+    header("Location: login.php"); die();
 }
 
-//pretvori iz minut v ure in minute
-function fromMintoString($min){
+/**
+pretvori min dolžina v obliko ure in minute
+@min - dolžina v minutah
+*/
+function fromMinToString($min) {
     $min = (int) $min;
-    
-    if(empty($min)){
+
+    if (empty($min)) {
         return;
     }
-    $hour = floor($min / 60);
+
+    $hour = floor($min/60);
     $min = $min - ($hour*60);
     return "$hour h $min min";
 }
 
-
-
-/*vrača imena vshe žanrov,ki jih ima film*/
-function getGenres($movie_id){
+/**
+vrača imena vseh žanrov, ki jih ima nek film
+@movie_id - id filma za katerega zahtevamo žanre
+*/
+function getGenres($movie_id) {
     require 'db.php';
 
-    $query = "SELECT g.* FROM genres g INNER JOIN genres_movies gm ON gm.genre_id=g.id
-        WHERE gm.movie_id=? ORDER BY g.title";
+    $query = "SELECT g.* FROM genres g INNER JOIN genres_movies gm ON gm.genre_id=g.id 
+                WHERE gm.movie_id=? ORDER BY g.title";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$movie_id]);
+
     $return='';
     while ($row = $stmt->fetch()) {
-        if(!empty($return)){
+        if (!empty($return)) {
             $return=$return.' | ';
         }
         $return=$return.$row['title'];
     }
     return $return;
 }
-
 
 
 ?>
