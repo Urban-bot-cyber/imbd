@@ -42,7 +42,7 @@ switch ($type) {
         break;
     case 'video':
         // Check file size
-        if ($_FILES["file"]["size"] > 15000000) {
+        if ($_FILES["file"]["size"] > 45000000) {
             $uploadOk = 0;
         }
         
