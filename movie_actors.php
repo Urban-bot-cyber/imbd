@@ -1,5 +1,8 @@
 <?php
     include_once "header.php";
+
+    adminOnly();
+    
     include_once "db.php";
     include_once "functions.php";
 
@@ -11,9 +14,13 @@
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
 
+    $roles = array();
     $actors = array();
     while ($row = $stmt->fetch()) {
-        $actors[] = $row['actor_id'];
+        $actor_id = $row['actor_id'];
+        $actors[] = $actor_id;
+        //za igralca si zapomnim vlogo
+        $roles[$actor_id] = $row['role'];
     }
 ?>
 
@@ -30,7 +37,7 @@
             if (in_array($row['id'],$actors)) {
                 echo '<input type="checkbox" checked="checked" name="actors[]" value="'.$row['id'].'" /> '
                 .$row['first_name'].' '.$row['last_name'].'<br />';
-                echo '<input type="text" placeholder="Vnesi ime vloge" name="role['.$row['id'].']" class="form-control" /><br />';
+                echo '<input type="text" value="'.$roles[$row['id']].'" placeholder="Vnesi ime vloge" name="role['.$row['id'].']" class="form-control" /><br />';
             }
             else {
                 echo '<input type="checkbox" name="actors[]" value="'.$row['id'].'" /> '
